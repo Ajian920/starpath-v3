@@ -127,7 +127,6 @@ button:active{transform:scale(.95)}
 /* 面板 */
 .panel{display:none;animation:pIn .25s ease}
 .panel.active{display:block}
-@media(min-width:1024px){.panel.active{display:contents}}
 @keyframes pIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* 底部导航 */
@@ -358,13 +357,6 @@ button:active{transform:scale(.95)}
 .sb-up{background:rgba(0,240,255,.3);color:var(--cyan)}
 .sb-dn{background:rgba(255,45,149,.3);color:var(--magenta)}
 
-  position:fixed;pointer-events:none;z-index:9999;
-  border-radius:var(--r-sm);box-shadow:0 16px 48px rgba(0,0,0,.8);
-  transform:scale(1.08) rotate(1deg);opacity:.9;
-  width:90px;aspect-ratio:3/4;background:var(--surface);
-  overflow:hidden;border:2px solid var(--cyan);
-}
-
 
 
 /* 养成任务 */
@@ -527,6 +519,7 @@ button:active{transform:scale(.95)}
 }
 
 /* ===== 桌面端 ===== */
+/* ===== \u684c\u9762\u7aef ===== */
 @media(min-width:1024px){
   :root{--nav-h:0px}
 
@@ -536,58 +529,79 @@ button:active{transform:scale(.95)}
     font:15px/1.6 var(--font);
   }
 
+  /* \u9876\u680f\u5c45\u4e2d\u94fa\u6ee1 */
   .topbar{
+    position:relative;
     padding:10px 28px;
-    max-width:1200px;
+    width:100%;
+    max-width:1400px;
     margin:0 auto;
-    border-radius:0 0 var(--r) var(--r);
+    left:auto;right:auto;
+    box-sizing:border-box;
   }
 
+  /* \u7b49\u7ea7\u6761 */
   .lv-bar{
-    max-width:1200px;
+    max-width:1400px;
     margin:0 auto;
-    padding:0 28px 8px;
+    padding:4px 28px 8px;
+    width:100%;
+    box-sizing:border-box;
   }
 
+  /* \u4e3b\u5185\u5bb9\u533a */
   .content{
-    max-width:1200px;
+    max-width:1400px;
+    width:100%;
     margin:0 auto;
-    padding:20px 28px;
-    padding-bottom:40px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
+    padding:20px 28px 40px;
+    display:flex;
+    flex-direction:column;
     gap:20px;
-    min-height:calc(100vh - 120px);
+    min-height:calc(100vh - 100px);
+    box-sizing:border-box;
   }
 
-  .panel.active{display:contents}
+  /* \u9762\u677f */
+  .panel{display:none!important}
+  .panel.active{display:flex!important;flex-wrap:wrap;gap:20px}
 
-  #pHome{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  #pHome > .card:first-child{grid-column:1}
-  #pHome > .card:nth-child(2){grid-column:2}
-  #pHome > .card:nth-child(3){grid-column:1/-1}
+  /* \u4e3b\u9875\u9762\u677f\u53cc\u5217 */
+  #pHome{width:100%}
+  #pHome > .profile-section{flex:0 0 calc(50% - 10px)}
+  #pHome > .stats-row{flex:0 0 calc(50% - 10px)}
+  #pHome > .meters{flex:0 0 100%}
+  #pHome > .combo-z{flex:0 0 100%}
+  #pHome > .card{flex:0 0 calc(50% - 10px)}
 
-  #pMedia{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  #pMedia > .card:first-child{grid-column:1}
-  #pMedia > .card:nth-child(2){grid-column:2}
+  /* \u5a92\u4f53\u9762\u677f\u53cc\u5217 */
+  #pMedia{width:100%}
+  #pMedia > .card{flex:0 0 calc(50% - 10px)}
 
-  .gal-grid{grid-template-columns:repeat(5,1fr);gap:12px}
+  /* \u76f8\u518c\u7f51\u683c */
+  .gal-grid{
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+  }
   .pc{border-radius:var(--r)}
   .pc:hover{transform:scale(1.03);box-shadow:0 12px 36px rgba(0,0,0,.5)}
 
   .player{border-radius:var(--r)}
 
-  #pMission, #pFan, #pAch{grid-column:1/-1}
+  /* \u4efb\u52a1/\u7c89\u4e1d/\u6210\u5c31\u5355\u5217\u94fa\u6ee1 */
+  #pMission, #pFan, #pAch{width:100%}
 
   .card{border-radius:var(--r)}
   .card-body{padding:18px 20px}
   .card-title{font-size:18px}
   .btn-s{min-height:38px;padding:6px 16px;font-size:13px}
 
+  /* \u5e95\u90e8\u5bfc\u822a\u2192\u9876\u90e8\u6a2a\u5411\u6807\u7b7e */
   .bottom-nav{
     position:relative;
-    bottom:auto;
+    bottom:auto;left:auto;right:auto;
     height:auto;
+    padding:8px 20px;
     display:flex;
     justify-content:center;
     gap:6px;
@@ -595,9 +609,10 @@ button:active{transform:scale(.95)}
     backdrop-filter:blur(10px);
     border-top:1px solid var(--border);
     border-bottom:1px solid var(--border);
-    padding:8px 20px;
-    max-width:1200px;
+    max-width:1400px;
     margin:0 auto;
+    width:100%;
+    box-sizing:border-box;
     border-radius:0 0 var(--r) var(--r);
   }
   .bottom-nav .nav-item{
@@ -615,9 +630,11 @@ button:active{transform:scale(.95)}
   .bottom-nav .nav-item.active::after{display:none}
   .bottom-nav .nav-icon{font-size:16px}
 
+  /* \u5f39\u7a97 */
   .modal{max-width:480px;border-radius:var(--r)}
   .modal-h h2{font-size:18px}
 
+  /* \u9884\u89c8 */
   .prev-ov{padding:40px}
   .prev-ov img{max-width:80vw;max-height:85vh;border-radius:var(--r)}
 
@@ -630,16 +647,16 @@ button:active{transform:scale(.95)}
   .m-item{padding:12px 14px}
 }
 
-/* ===== 大桌面 ===== */
+/* ===== \u5927\u684c\u9762 ===== */
 @media(min-width:1440px){
   .topbar,.lv-bar,.content,.bottom-nav{max-width:1400px}
   .gal-grid{grid-template-columns:repeat(6,1fr)}
   .ach-grid{grid-template-columns:repeat(6,1fr)}
-  #pHome{grid-template-columns:1fr 1fr 1fr}
-  #pHome > .card:first-child{grid-column:1}
-  #pHome > .card:nth-child(2){grid-column:2}
-  #pHome > .card:nth-child(3){grid-column:3}
-  #pHome > .card:nth-child(4){grid-column:1/-1}
+  #pHome > .profile-section{flex:0 0 calc(33.33% - 14px)}
+  #pHome > .stats-row{flex:0 0 calc(33.33% - 14px)}
+  #pHome > .meters{flex:0 0 calc(33.33% - 14px)}
+  #pHome > .combo-z{flex:0 0 100%}
+  #pHome > .card{flex:0 0 calc(33.33% - 14px)}
 }
 </style>
 </head>
