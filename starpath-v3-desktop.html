@@ -286,11 +286,12 @@ button:active{transform:scale(.95)}
 /* 视频播放器 */
 .pw{position:relative}
 .player{
-  position:relative;background:#000;aspect-ratio:16/9;width:100%;
+  position:relative;background:#000;aspect-ratio:14/9;width:100%;
   display:flex;align-items:center;justify-content:center;
   border-radius:var(--r) var(--r) 0 0;overflow:hidden;
 }
 .player video{width:100%;height:100%;object-fit:contain;background:#000;display:block}
+.pw{width:100%;max-width:100%}
 .player .no-v{color:var(--muted);font-size:14px;text-align:center;padding:20px;display:flex;flex-direction:column;gap:6px;align-items:center}
 .player .no-v .bi{font-size:40px;opacity:.4}
 .player .no-v .su{font-size:12px;opacity:.5}
@@ -573,11 +574,11 @@ button:active{transform:scale(.95)}
   #pHome > .card{grid-column:span 1}
 
   /* \u5a92\u4f53\u9762\u677f\u53cc\u5217 */
-  #pMedia{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%}
+  #pMedia{display:flex;flex-direction:column;gap:20px;width:100%}
   #pMedia > .card{width:100%;min-width:0}
 
   /* \u89c6\u9891\u64ad\u653e\u5668\u94fa\u6ee1 */
-  .player{border-radius:var(--r);aspect-ratio:16/9;width:100%}
+  .player{border-radius:var(--r);aspect-ratio:14/9;width:100%;max-width:100%}
   .player video{width:100%;height:100%;object-fit:contain}
 
   /* \u76f8\u518c\u7f51\u683c */
@@ -1001,11 +1002,12 @@ button:active{transform:scale(.95)}
 /* 视频播放器 */
 .pw{position:relative}
 .player{
-  position:relative;background:#000;aspect-ratio:16/9;width:100%;
+  position:relative;background:#000;aspect-ratio:14/9;width:100%;
   display:flex;align-items:center;justify-content:center;
   border-radius:var(--r) var(--r) 0 0;overflow:hidden;
 }
 .player video{width:100%;height:100%;object-fit:contain;background:#000;display:block}
+.pw{width:100%;max-width:100%}
 .player .no-v{color:var(--muted);font-size:14px;text-align:center;padding:20px;display:flex;flex-direction:column;gap:6px;align-items:center}
 .player .no-v .bi{font-size:40px;opacity:.4}
 .player .no-v .su{font-size:12px;opacity:.5}
